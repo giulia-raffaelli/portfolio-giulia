@@ -1,5 +1,26 @@
+import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+
+function EasterEggTooltip({ children, quote }) {
+  const [show, setShow] = useState(false);
+  return (
+    <span
+      className="relative inline-block"
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
+      onFocus={() => setShow(true)}
+      onBlur={() => setShow(false)}
+    >
+      {children}
+      {show && (
+        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 bg-bg-deep border border-teal/40 text-teal font-mono text-[10px] px-3 py-1.5 whitespace-nowrap shadow-[0_0_12px_rgba(62,144,158,0.25)] pointer-events-none">
+          {quote}
+        </span>
+      )}
+    </span>
+  );
+}
 
 function PixelAvatar({ src }) {
   return (
@@ -111,6 +132,11 @@ export default function Home() {
               Get in touch
             </a>
           </motion.div>
+
+          {/* Visitor hint — lets curious players know secrets exist */}
+          <motion.p variants={fadeIn} className="font-mono text-[10px] text-ink-dim/25 tracking-widest mt-8 select-none" aria-hidden="true">
+            // this page contains hidden achievements — good luck, player
+          </motion.p>
         </motion.div>
       </section>
 
@@ -341,8 +367,11 @@ export default function Home() {
           {/* Connector lines (Desktop only) */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
             <svg className="w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="none" style={{ minHeight: '500px' }}>
-              <path d="M 200 150 L 200 300 L 600 300 L 600 450" fill="none" stroke="rgba(255,182,39,0.3)" strokeWidth="4" strokeDasharray="8 8" />
+              {/* MSc → Bocconi BSc */}
               <path d="M 200 150 L 600 150" fill="none" stroke="rgba(255,182,39,0.3)" strokeWidth="4" strokeDasharray="8 8" />
+              {/* Bocconi BSc → Exchange Program (same institution, linked) */}
+              <path d="M 600 150 L 600 450" fill="none" stroke="rgba(255,182,39,0.55)" strokeWidth="3" strokeDasharray="6 5" />
+              <text x="612" y="310" fill="rgba(255,182,39,0.4)" fontSize="10" fontFamily="monospace">↳ BSc yr 3</text>
             </svg>
           </div>
 
@@ -354,7 +383,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-panel border-l-4 border-amber p-6 relative group"
+              className="bg-panel border-l-4 border-amber p-6 relative group sparkle-card"
             >
               <div className="absolute top-0 right-0 p-2 bg-amber/10 text-amber font-mono text-xs font-bold">GPA 1.0/4</div>
               <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed pr-20">MSc in Marketing</h3>
@@ -364,13 +393,13 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Node 2 — Bocconi (FIXED: both badges fully inside card, no overflow) */}
+            {/* Node 2 — Bocconi */}
             <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-panel border-l-4 border-amber p-6 relative group"
+              className="bg-panel border-l-4 border-amber p-6 relative group sparkle-card"
             >
               {/* Badges row — stacked inside card bounds */}
               <div className="flex flex-wrap justify-end items-start gap-2 mb-4">
@@ -392,7 +421,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-panel border-l-4 border-amber/50 p-6 relative group"
+              className="bg-panel border-l-4 border-amber/50 p-6 relative group sparkle-card"
             >
               <div className="absolute top-0 right-0 p-2 bg-amber/5 text-amber/70 font-mono text-xs">Online</div>
               <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed">Master in Digital Marketing</h3>
@@ -408,10 +437,13 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
-              className="bg-panel border-l-4 border-amber/50 p-6 relative group"
+              className="bg-panel border-l-4 border-amber/50 p-6 relative group sparkle-card"
             >
               <div className="absolute top-0 right-0 p-2 bg-amber/5 text-amber/70 font-mono text-xs font-bold">GPA 1.2/4</div>
-              <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed">Exchange Program</h3>
+              <div className="flex items-center gap-2 mb-2 flex-wrap">
+                <h3 className="font-pixel text-sm text-ink leading-relaxed">Exchange Program</h3>
+                <span className="font-mono text-[9px] text-amber/60 border border-amber/25 px-1.5 py-0.5 tracking-wider whitespace-nowrap">↳ Bocconi BSc · Year 3</span>
+              </div>
               <div className="font-mono text-xs text-amber/70 mb-4">Wirtschaftsuniversität Wien (WU) · Sep 2023–Jan 2024</div>
               <div className="font-mono text-sm text-ink-dim">
                 <span className="text-ink font-bold">Coursework:</span> Marketing, Corporate Finance, Strategic Management & Leadership
@@ -510,7 +542,9 @@ export default function Home() {
               <circle cx="19" cy="19" r="2.5" fill="#3E909E"/>
             </svg>
 
-            <h3 className="font-pixel text-lg text-teal mb-8 border-b-2 border-teal/20 pb-4 relative z-10">World Map</h3>
+            <EasterEggTooltip quote="not all who scroll are lost...">
+              <h3 className="font-pixel text-lg text-teal mb-8 border-b-2 border-teal/20 pb-4 relative z-10 cursor-default">World Map</h3>
+            </EasterEggTooltip>
 
             {/* Passport stamp chips */}
             <div className="flex flex-wrap gap-4 relative z-10">
@@ -550,9 +584,11 @@ export default function Home() {
           {/* Section header with PHONE HOME eyebrow */}
           <div className="flex flex-wrap justify-center items-center gap-3 mb-2">
             <span className="font-pixel text-xs text-teal">05 · Contact</span>
-            <span className="font-mono text-[10px] text-teal/50 border border-teal/20 px-2 py-0.5 tracking-widest uppercase">
-              PHONE HOME
-            </span>
+            <EasterEggTooltip quote="the call is coming from inside the portfolio.">
+              <span className="font-mono text-[10px] text-teal/50 border border-teal/20 px-2 py-0.5 tracking-widest uppercase cursor-default">
+                PHONE HOME
+              </span>
+            </EasterEggTooltip>
           </div>
 
           <h2 className="font-pixel text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">

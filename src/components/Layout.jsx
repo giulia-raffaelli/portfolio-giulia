@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Header from './Header'
 import Footer from './Footer'
+import AchievementToast from './AchievementToast'
 
 function PageTransition({ children }) {
   const shouldReduceMotion = useReducedMotion()
@@ -36,6 +37,7 @@ export default function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
+      <AchievementToast />
     </div>
   )
 }

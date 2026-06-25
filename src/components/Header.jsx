@@ -20,12 +20,23 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link 
-              to="/" 
-              className="group flex items-center justify-center w-12 h-12 rounded-full border-2 border-amber bg-panel shadow-[0_0_10px_rgba(255,182,39,0.3)] hover:shadow-[0_0_20px_rgba(255,182,39,0.6)] transition-all duration-300 neon-focus"
+            <Link
+              to="/"
+              className="group relative flex items-center justify-center w-12 h-12 rounded-full border-2 border-amber bg-panel shadow-[0_0_10px_rgba(255,182,39,0.3)] hover:shadow-[0_0_20px_rgba(255,182,39,0.6)] transition-all duration-300 neon-focus"
               onClick={closeMenu}
+              onMouseEnter={(e) => {
+                const tip = e.currentTarget.querySelector('.gr-tooltip');
+                if (tip) tip.style.opacity = '1';
+              }}
+              onMouseLeave={(e) => {
+                const tip = e.currentTarget.querySelector('.gr-tooltip');
+                if (tip) tip.style.opacity = '0';
+              }}
             >
               <span className="font-pixel text-amber text-sm mt-1 group-hover:animate-pulse">GR</span>
+              <span className="gr-tooltip absolute top-full left-1/2 -translate-x-1/2 mt-2 bg-bg-deep border border-amber/30 text-amber font-mono text-[9px] px-3 py-1.5 whitespace-nowrap shadow-[0_0_10px_rgba(255,182,39,0.2)] pointer-events-none z-50 opacity-0 transition-opacity duration-200">
+                there is no portfolio. only signal.
+              </span>
             </Link>
           </div>
 
