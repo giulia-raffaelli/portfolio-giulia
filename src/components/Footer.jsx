@@ -10,7 +10,7 @@ export default function Footer() {
           <nav className="flex flex-wrap justify-center md:justify-start gap-6 md:gap-8">
             <Link to="/" className="font-pixel text-[10px] text-ink-dim hover:text-teal transition-colors neon-focus">Home</Link>
             <Link to="/projects" className="font-pixel text-[10px] text-ink-dim hover:text-teal transition-colors neon-focus">Projects</Link>
-            <Link to="/curiosity-corner" className="font-pixel text-[10px] text-ink-dim hover:text-teal transition-colors neon-focus">Curiosity Corner</Link>
+            <Link to="/curiosity-corner" className="font-pixel text-[10px] text-ink-dim hover:text-teal transition-colors neon-focus">Side Quests</Link>
             <a href="#top" className="font-pixel text-[10px] text-amber hover:text-amber/80 transition-colors neon-focus">Back to top ↑</a>
           </nav>
 

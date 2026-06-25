@@ -1,0 +1,27 @@
+I have an RPG/video-game-themed portfolio site (character select screen, class: Growth Marketer, skill tree, quest log, world map, secret achievement). I want you to add a layer of hidden easter eggs and nerd references throughout the site — subtle enough that they don't clutter the main content, but rewarding for visitors who notice or interact.
+
+Please implement a MIX of the following (pick what fits the existing layout/CSS best, don't force all of them in):
+
+RETRO VIDEO GAME REFERENCES:
+- An "Achievement Unlocked" toast notification (like Xbox/PlayStation style) that pops up when a visitor scrolls to the bottom of the page or spends 60+ seconds on the site
+- A subtle 8-bit/pixel-art coin or sparkle animation when hovering over skill tree items, like collecting a power-up
+- A hidden "1-UP" or extra life icon tucked somewhere small (favicon, footer corner) that does something small and fun when clicked
+- Treasure-chest opening animation when expanding a project/quest in the Quest Log
+- A subtle CRT scanline or pixel-grain overlay toggle (on/off button styled like an old TV)
+
+NERD FILM / SCI-FI REFERENCES:
+- A small hidden tooltip or alt-text easter egg with a quote nod (paraphrased, not exact lines) to Star Wars, The Matrix, or Lord of the Rings when hovering over specific icons (e.g. the World Map pin, the contact button, the resume download button)
+- An optional "hidden mode" toggle that subtly shifts the color palette to a green-on-black "terminal" look as a nod to hacker/sci-fi movie aesthetics
+- A footer credit line styled like an old movie's closing crawl
+
+HINT FOR VISITORS:
+- Add a small, playful hint somewhere near the top of the page (under the hero/character intro) and/or near the footer, letting visitors know easter eggs exist without giving them away. Use wording like: "🎮 This page contains hidden achievements. Good luck, player." or "P.S. there are secrets hidden on this page 🕹️" — match it stylistically to whichever section you place it in.
+
+GENERAL RULES:
+- No Konami code — I don't want that one
+- Don't use any copyrighted logos, exact quotes, or trademarked imagery — keep references playful and implied, not literal reproductions
+- Keep all easter eggs OPTIONAL/HIDDEN — they shouldn't interfere with recruiters or visitors who just want to read the CV normally
+- Keep performance light — no heavy JS libraries, vanilla CSS/JS preferred
+- Match the existing color scheme and fonts already used in the site
+
+Implement these step by step and show me a preview after each major addition so I can confirm before moving to the next.

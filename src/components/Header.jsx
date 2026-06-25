@@ -11,7 +11,7 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Curiosity Corner', path: '/curiosity-corner' }
+    { name: 'Side Quests', path: '/curiosity-corner' }
   ];
 
   return (

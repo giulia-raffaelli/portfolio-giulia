@@ -1,11 +1,10 @@
 import { motion, useReducedMotion } from 'framer-motion';
 
-function LockedTile({ label }) {
+function LockedTile() {
   return (
     <div className="bg-bg border-2 border-dashed border-ink-dim/20 p-6 flex flex-col items-center justify-center gap-3 min-h-[140px] relative overflow-hidden">
       <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, var(--ink-dim) 0, var(--ink-dim) 1px, transparent 0, transparent 50%)', backgroundSize: '8px 8px' }}></div>
       <span className="font-pixel text-2xl text-ink-dim/30 select-none">🔒</span>
-      <span className="font-mono text-xs text-ink-dim/40 text-center">{label}</span>
       <span className="font-pixel text-[9px] text-magenta/70 border border-magenta/30 px-2 py-1 tracking-widest">COMING SOON</span>
     </div>
   );
@@ -80,9 +79,9 @@ export default function CuriosityCorner() {
 
         {/* Locked level tiles — repeatable card structure */}
         <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <LockedTile label="Generative Brand Identity" />
-          <LockedTile label="Prompt Engineering Lab" />
-          <LockedTile label="Human × Machine Campaigns" />
+          <LockedTile />
+          <LockedTile />
+          <LockedTile />
         </motion.div>
 
         <motion.p variants={itemVariants} className="font-mono text-[10px] text-ink-dim/30 text-center mt-6 tracking-wider">

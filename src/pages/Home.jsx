@@ -96,8 +96,6 @@ export default function Home() {
           </motion.div>
 
           <motion.div variants={fadeIn} className="font-mono text-sm text-ink flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-12">
-            <span>Vienna, Austria</span>
-            <span className="hidden sm:inline text-teal">/</span>
             <span>MSc Marketing · WU Vienna</span>
             <span className="hidden sm:inline text-teal">/</span>
             <span className="text-amber animate-pulse bg-amber/10 px-2 py-1 border border-amber/30 rounded font-bold tracking-wider">
@@ -538,19 +536,6 @@ export default function Home() {
 
         </div>
 
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeIn}
-          className="max-w-3xl mx-auto text-center py-12 px-8 relative"
-        >
-          <div className="absolute top-0 left-0 text-6xl text-teal/20 font-serif leading-none">"</div>
-          <div className="absolute bottom-0 right-0 text-6xl text-teal/20 font-serif leading-none">"</div>
-          <p className="font-serif italic text-2xl md:text-3xl text-ink leading-relaxed">
-            A genuine curiosity for different cultures and languages - German (B1/B2) is the latest one in progress.
-          </p>
-        </motion.div>
       </section>
 
       {/* SECTION 05: CONTACT */}
