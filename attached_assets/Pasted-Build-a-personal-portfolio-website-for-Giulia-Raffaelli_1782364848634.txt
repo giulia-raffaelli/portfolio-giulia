@@ -1,0 +1,230 @@
+Build a personal portfolio website for Giulia Raffaelli, a marketing & brand
+strategy student, styled as an 80s arcade game / nerd-movie homage. This is a
+real professional portfolio — the retro-game aesthetic is the visual language,
+but the content must read as credible and senior, not jokey.
+
+## TECH STACK
+- React + Vite
+- Tailwind CSS for styling
+- react-router-dom for the 3 pages (Home, Projects, Curiosity Corner)
+- framer-motion for page-load and hover micro-interactions (respect
+  prefers-reduced-motion: provide a static fallback for every animation)
+- Google Fonts: "Press Start 2P" (display/pixel headlines, used sparingly —
+  only for big titles and HUD labels) + "Space Mono" (body text, UI labels,
+  data) + "Playfair Display" italic (kept from the original brand, used only
+  for the 2-3 "lore quote" moments described below — this is the bridge
+  between her original elegant brand and the new arcade skin)
+
+## DESIGN SYSTEM
+Colors (CSS variables):
+--bg: #0B0E1A        (deep space navy, NOT pure black)
+--bg-deep: #05060D
+--panel: #10142A
+--teal: #3E909E      (KEEP this — it's Giulia's existing brand accent,
+                       use as the PRIMARY accent so the redesign feels like
+                       an evolution, not a different person)
+--magenta: #FF2E92    (secondary accent)
+--amber: #FFB627      (secondary accent, CTAs / highlights)
+--violet: #6C4FF6     (tertiary accent, used sparingly)
+--ink: #EDEAE0
+--ink-dim: #9B9DB0
+
+Signature visual elements:
+- Subtle CRT scanline overlay (repeating-linear-gradient, low opacity,
+  mix-blend-mode overlay) + soft vignette — across the whole site, not just
+  the hero
+- A receding perspective grid floor (Tron-style) behind the hero only
+- Pixel-style borders / chunky box-shadows on buttons and cards instead of
+  soft drop shadows
+- All hover/focus states have a visible neon outline (accessibility —
+  visible keyboard focus is required)
+- Mobile-first responsive; the pixel font is for short labels/titles only,
+  never for paragraphs (readability)
+
+## INFORMATION ARCHITECTURE
+Giulia's original site already has a numbered structure (01–05) — preserve
+that numbering, just re-skin it. 3 pages total:
+
+### PAGE 1 — HOME (single scrolling page, sections 01-05)
+
+**Hero ("Stage Select / Insert Coin" attract screen)**
+- Eyebrow: "Portfolio · Marketing & Brand Strategy"
+- H1: "Giulia Raffaelli"
+- Subtext: "Marketing & Brand Strategy — MSc Marketing student at WU Vienna,
+  building the bridge between creative ideas and measurable impact."
+- Meta row: "Vienna, Austria / MSc Marketing · WU Vienna / Open to 2026
+  opportunities" (the "open to opportunities" tag should read like a
+  flashing "1UP available" badge)
+- CTAs: "View projects →" (links to Projects page) and "Get in touch"
+  (anchors to Contact section)
+
+**01 · About → "Character Select" screen**
+Two-column layout: left = a character card (avatar placeholder, name plate,
+"CLASS: GROWTH MARKETER" style tag); right = bio + stats.
+Bio text (use verbatim):
+"I'm a marketing master's student at WU Vienna with a background in
+Economics & Management for Arts, Culture and Communication from Bocconi
+University. I'm curious by nature - drawn to brand strategy, digital
+campaigns and the data behind consumer behaviour, and always looking for
+the bridge between creativity and measurable impact.
+Outside coursework, I've worked across content strategy, business
+development and sales - and I like projects that combine structured
+thinking with a strong creative point of view."
+"Next mission" banner: "Next - exchange semester in Kobe, Japan, from
+September to January."
+Languages as equipped abilities/chips: Italian · Native, English · C1,
+German · B1/B2.
+Contact info block: giuliaraffaelli179@gmail.com · +39 334 109 4073 ·
+linkedin.com/in/giulia-raffaelli · Location: "The world"
+
+**02 · Work Experience → "Quest Log"**
+Reverse-chronological list, current job marked as "ACTIVE QUEST":
+1. Social Media Manager — Digital Economy, WU Vienna · Nov 2025-Present ·
+   Vienna, Austria. "Managing the LinkedIn presence for WU's Master in
+   Digital Economy - content strategy and creation, community management,
+   and stakeholder coordination across alumni, students, faculty and
+   industry partners. Editorial calendar planning and performance
+   analytics."
+2. Marketing & Business Development Intern — BitBang S.r.l. · Jul 2024-Dec
+   2024 · Bologna, Italy. "Identified new business opportunities and
+   developed marketing strategies, supporting sales efforts with a focus on
+   prospects' digital needs."
+3. Sales Representative — PegPerego · Apr 2024-Jun 2024 · Milan, Italy.
+   "Promoted PegPerego products at Salina Milano, engaging directly with
+   customers on the retail floor."
+
+**03 · Education → "Skill Tree"**
+4 nodes, each showing dates, a score badge, and coursework:
+1. MSc in Marketing — Wirtschaftsuniversität Wien (WU) · Sep 2025-Jun 2027 ·
+   GPA 1.0/4. Coursework: Global Marketing Strategy, Management by
+   Experiments, Marketing Analytics, SQL & Power BI.
+2. BSc Economics & Management — Bocconi University · Sep 2021-Oct 2024 ·
+   109/110. "Arts, Culture and Communication. Thesis - 'Marketing Mattel's
+   live-action Barbie: a case study in rebranding a cultural icon.'" — give
+   this thesis its own small "secret achievement unlocked" badge, it's a
+   great detail, don't bury it.
+3. Master in Digital Marketing — Start2Impact University · Apr 2024-May
+   2025 · Online. Coursework: SEO, Google Ads & Analytics, Meta Ads, Funnel
+   Marketing, Copywriting, Video Editing.
+4. Exchange Program — Wirtschaftsuniversität Wien (WU) · Sep 2023-Jan 2024 ·
+   GPA 1.2/4. Coursework: Marketing, Corporate Finance, Strategic
+   Management & Leadership.
+
+**04 · Beyond the desk → split into two panels**
+
+Panel A, "Guild Hall" (Affiliations & Mentoring):
+- WUMA Marketing Association — Partners Department Associate · Oct
+  2025-Present
+- Mentors4u Program — Mentee, top 25% merit-based program · Apr 2024-Present
+- B.lab Bocconi — Social Media Manager, staff · Jan 2022-Jun 2023
+
+Panel B, "World Map" (International Exposure) — render as a travel-map/
+passport-stamps motif:
+- Rotary Exchange · Michigan, USA
+- High School Exchange · Beijing
+- Kaplan Summer Camp · Salisbury, UK
+- EF Summer Camp · Malta
+- Tandem Language Program · Vienna
+Closing italic quote (use Playfair Display italic here — "found journal
+page" treatment): "A genuine curiosity for different cultures and languages
+- German (B1/B2) is the latest one in progress."
+
+**05 · Contact → "Phone Home / Continue?" screen**
+H2: "Let's talk about how I can bring this thinking to your team."
+Email: giuliaraffaelli179@gmail.com · Phone: +39 334 109 4073 · LinkedIn:
+linkedin.com/in/giulia-raffaelli
+Footer nav: Home / Projects / Curiosity Corner / Back to top, plus
+"© Giulia Raffaelli · Vienna, 2026"
+
+### PAGE 2 — PROJECTS → "Level Select Map"
+Intro: "Selected Work — A selection of strategy, brand and analytics work
+across coursework, consulting challenges and self-directed projects. Each
+opens the full case file."
+
+3 FEATURED projects as large "stage" cards (each opens its Drive link in a
+new tab — these are real external links, do not modify):
+1. "Smooth Operator" — tag: Business Strategy · Team of 4. "A consulting
+   case challenge designing an AI-monitored solution to tourist-bus
+   congestion in Vienna's inner city - business case, costs & revenue, and
+   a full Business Model Canvas." Link: https://drive.google.com/file/d/1sSrHnwcpho2Oh1drTpUneUN9coaxGK1k/view?usp=sharing
+2. "Venus - Seronade Shelving Strategy" — tag: Retail & Shelving · Team
+   project. "A retail shelving and planogram strategy for Seronade,
+   identifying a multi-million revenue opportunity through an upgraded
+   in-store shelf layout." Link: https://drive.google.com/file/d/13d0lXewj8p5GmteZN_SEdOqQ_ZlFK2hw/view?usp=sharing
+3. "AI Disclosure & Purchase Intention" — tag: Marketing Analytics · Team of
+   5. "An experimental research study testing whether disclosing AI
+   co-creation in ads (vs. human-only) affects consumers' purchase
+   intention." Link: https://drive.google.com/file/d/1iOn_VFFpaQav94eigQPFr-QmUx_Xuuys/view?usp=sharing
+
+11 MORE WORK projects as smaller level tiles (each links out, same pattern):
+4. "CVS Health - Sector Analysis" — Financial Markets · Team of 5. "An
+   equity-research style analysis of CVS Health and the US healthcare
+   sector, examining pricing power, competitive dynamics and investment
+   thesis." Links: "View full project →" https://drive.google.com/file/d/1iM31cimfXJ4xQmumsATfKhDHxwB1t3sf/view?usp=sharing
+   and "Valuation spreadsheet ↗" https://docs.google.com/spreadsheets/d/1wL41YwdP-xpY8y-uYIZaCUV1IGjS6iFY/edit?usp=sharing
+5. "Mercedes-Benz - Brand Analysis" — Brand Strategy · Team of 6. "A full
+   brand analysis of Mercedes-Benz covering brand identity, positioning and
+   visual language across product, retail and communication touchpoints."
+   Link: https://drive.google.com/file/d/1iM31cimfXJ4xQmumsATfKhDHxwB1t3sf/view?usp=sharing
+6. "Sunnee - Meta Ads Project" — Brand & Performance · Individual. "A
+   fictional sustainable swimwear brand built end-to-end: brand identity,
+   market research, buyer personas and a full TOFU/MOFU/BOFU Meta Ads
+   funnel." Link: https://drive.google.com/file/d/1rFhOgHoIO7eCJHAqtMYm8DoX2-fh_Z7t/view?usp=sharing
+7. "Zara - Brand Analysis" — Brand Strategy · Team project. "A brand
+   analysis of Zara covering identity, retail experience and positioning
+   within the fast-fashion competitive landscape." Link:
+   https://drive.google.com/file/d/1yiIJuJmU0IY8lsfACsHGLQpoumK_FIsv/view?usp=sharing
+8. "Alo Yoga - Marketing & Controversy" — Brand Psychology · Individual.
+   "An analysis of Alo Yoga's psychological marketing playbook - sensory
+   branding and self-concept appeal - set against its recent lawsuits and
+   boycott calls." Link: https://drive.google.com/file/d/1ektRL95r46OLrtVr_vGEUaTweeQQ4OzK/view?usp=sharing
+9. "ÖBB - Plant-Based Pitch" — Behavioural Strategy · Team project. "An
+   internal pitch for ÖBB tackling why most Austrians still eat meat, using
+   behavioural psychology to design a plant-based dining campaign for
+   employees." Link: https://drive.google.com/file/d/1aWnuRgHnQaO1LY68HwcWN-fBDU6-H2mz/view?usp=sharing
+10. "Funnel Marketing Project" — Funnel Strategy · Individual. "An
+    end-to-end funnel marketing exercise mapping awareness-to-conversion
+    stages and the tactics used at each step." Link:
+    https://drive.google.com/file/d/18CZOg6keLb0SMsm1wFHiHI9YQMxerU4q/view?usp=sharing
+11. "Voci - Beyond Stereotypes" — Copywriting · Individual. "A copywriting
+    piece profiling women challenging stereotypes, written for the platform
+    Voci - focused on tone, narrative structure and voice." Link:
+    https://drive.google.com/file/d/1v_PArP45PunEV_pey3XbsZi5mN334K4e/view?usp=sharing
+12. "Social Media Graphic Design" — Visual Design · Individual. "A graphic
+    design exploration for social media content - visual systems, layout
+    and style applied across a sample content calendar." Link:
+    https://drive.google.com/file/d/19aEPaVu9qPS7l3cNJnRjmmcZPrk7YUy_/view?usp=drive_link
+13. "Instagram Project" — Social Media · Individual. "A focused Instagram
+    content project - planning and designing posts around a consistent
+    visual and editorial direction." Link:
+    https://drive.google.com/file/d/1cxdzbQ5nzT6Tfh-epbUQtCKint62P8X9/view?usp=sharing
+14. "Facebook Project" — Social Media · Individual. "A Facebook-focused
+    content and campaign project, applying platform-specific best practices
+    to a sample brand." Link:
+    https://drive.google.com/file/d/1jVt7Pe8ywewDDFFbRQxJ157G80fBMUjt/view?usp=sharing
+
+Visual treatment: featured projects = big "stages" on the map (more visual
+weight, category badge, full description); more-work projects = smaller
+"level tiles" in a grid (category chip + team size + short description).
+Clicking opens the real Drive link in a new tab — do not invent or guess
+URLs beyond what's given above.
+
+### PAGE 3 — CURIOSITY CORNER → "Bonus Stage"
+Content for this page has NOT been provided yet. Build the page shell
+(consistent styling, a "Bonus Stage / Secret Room" header treatment) with a
+single placeholder block saying "Content coming soon" — do not invent
+fictional content for this page.
+
+## NAVIGATION
+Persistent header: "GR" pixelated coin/medallion logo (link to Home) + nav
+links Home / Projects / Curiosity Corner + a "Contact" pill button.
+Footer on every page: same nav repeated + "© Giulia Raffaelli · Vienna,
+2026".
+
+## CONSTRAINTS
+- Do not fabricate any stat, project detail, date, or link not listed above.
+- Keep all real external links exactly as given.
+- Respect prefers-reduced-motion everywhere animation is used.
+- Visible focus outlines on all interactive elements (keyboard accessible).
+- Mobile breakpoint: stack all multi-column layouts to single column below
+  ~640px.
