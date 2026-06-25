@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import Header from './Header'
 import Footer from './Footer'
 import AchievementToast from './AchievementToast'
+import MatrixRain from './MatrixRain'
 
 function PageTransition({ children }) {
   const shouldReduceMotion = useReducedMotion()
@@ -38,6 +39,7 @@ export default function Layout() {
       </main>
       <Footer />
       <AchievementToast />
+      <MatrixRain />
     </div>
   )
 }

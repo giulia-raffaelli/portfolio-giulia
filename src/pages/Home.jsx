@@ -553,7 +553,7 @@ export default function Home() {
                 { label: 'Beijing',       sub: 'High School Exchange', rotate: 'rotate-1' },
                 { label: 'Salisbury, UK', sub: 'Kaplan Summer Camp', rotate: '-rotate-1' },
                 { label: 'Malta',         sub: 'EF Summer Camp', rotate: 'rotate-2' },
-                { label: 'Vienna',        sub: 'Tandem Language Program', rotate: '-rotate-1' },
+                { label: 'Australia',     sub: 'Melbourne · Sydney · Brisbane — 1 month exploring', rotate: '-rotate-1' },
               ].map(({ label, sub, rotate }) => (
                 <span
                   key={label}

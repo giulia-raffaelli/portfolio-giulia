@@ -3,27 +3,31 @@ import { Link } from 'react-router-dom';
 
 function OneUpButton() {
   const [count, setCount] = useState(0);
-  const [showPop, setShowPop] = useState(false);
+  const [pops, setPops] = useState([]);
 
   const handleClick = () => {
+    const id = Date.now();
     setCount((c) => c + 1);
-    setShowPop(true);
-    setTimeout(() => setShowPop(false), 1200);
+    setPops((p) => [...p, id]);
+    setTimeout(() => setPops((p) => p.filter((x) => x !== id)), 1100);
   };
 
   return (
     <button
       onClick={handleClick}
-      className="relative font-pixel text-[8px] text-ink-dim/20 hover:text-amber/70 transition-colors duration-300 cursor-pointer select-none"
+      className="relative font-pixel text-[9px] text-green-400/50 hover:text-green-400 border border-green-400/25 hover:border-green-400/70 px-2 py-0.5 transition-all duration-200 cursor-pointer select-none hover:shadow-[0_0_10px_rgba(74,222,128,0.35)]"
       title="???"
       aria-label="Hidden bonus"
     >
-      1UP
-      {showPop && (
-        <span className="one-up-pop absolute bottom-full left-1/2 -translate-x-1/2 mb-1 font-pixel text-[9px] text-amber pointer-events-none whitespace-nowrap">
-          +1UP{count > 4 ? ' 🤯' : ''}
+      ♥ 1UP
+      {pops.map((id) => (
+        <span
+          key={id}
+          className="one-up-pop absolute bottom-full left-1/2 -translate-x-1/2 mb-1 font-pixel text-[11px] text-green-400 pointer-events-none whitespace-nowrap drop-shadow-[0_0_6px_rgba(74,222,128,0.9)]"
+        >
+          +1UP{count > 5 ? '!!' : '!'}
         </span>
-      )}
+      ))}
     </button>
   );
 }
@@ -39,31 +43,15 @@ function TerminalToggle() {
   return (
     <button
       onClick={toggle}
-      className="font-mono text-[9px] text-ink-dim/25 hover:text-teal/50 transition-colors cursor-pointer tracking-wider select-none"
-      title="Toggle terminal mode"
-      aria-label="Toggle hacker terminal mode"
+      className={`font-pixel text-[8px] border px-2 py-0.5 transition-all duration-200 cursor-pointer select-none ${
+        active
+          ? 'text-green-400 border-green-400/70 shadow-[0_0_12px_rgba(0,255,65,0.5)] bg-green-400/10'
+          : 'text-green-500/35 border-green-500/20 hover:text-green-400/70 hover:border-green-400/40 hover:shadow-[0_0_8px_rgba(0,255,65,0.25)]'
+      }`}
+      title="Toggle Matrix mode"
+      aria-label="Toggle Matrix terminal mode"
     >
-      {active ? '[EXIT MATRIX]' : '[>_]'}
-    </button>
-  );
-}
-
-function CRTToggle() {
-  const [crtOn, setCrtOn] = useState(true);
-
-  const toggle = () => {
-    setCrtOn((c) => !c);
-    document.body.classList.toggle('crt-off');
-  };
-
-  return (
-    <button
-      onClick={toggle}
-      className="font-mono text-[9px] text-ink-dim/25 hover:text-violet/50 transition-colors cursor-pointer select-none"
-      title={crtOn ? 'Disable CRT scanlines' : 'Enable CRT scanlines'}
-      aria-label="Toggle CRT scanline overlay"
-    >
-      📺
+      {active ? 'EXIT MATRIX' : '>_ MATRIX'}
     </button>
   );
 }
@@ -90,11 +78,10 @@ export default function Footer() {
             <span className="slow-blink font-pixel text-[8px] text-ink-dim/30 tracking-widest select-none" aria-hidden="true">
               CONTINUE? Y/N
             </span>
-            {/* Easter-egg micro-controls — subtle, for curious visitors */}
-            <div className="flex items-center gap-4 mt-1" aria-hidden="true">
+            {/* Easter-egg micro-controls */}
+            <div className="flex items-center gap-3 mt-1" aria-hidden="true">
               <OneUpButton />
               <TerminalToggle />
-              <CRTToggle />
             </div>
           </div>
 
