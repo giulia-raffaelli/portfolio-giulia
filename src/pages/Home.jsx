@@ -589,7 +589,7 @@ export default function Home() {
                 { label: 'Beijing',       sub: 'High School Exchange', rotate: 'rotate-1' },
                 { label: 'Salisbury, UK', sub: 'Kaplan Summer Camp', rotate: '-rotate-1' },
                 { label: 'Malta',         sub: 'EF Summer Camp', rotate: 'rotate-2' },
-                { label: 'Australia',     sub: 'Melbourne · Sydney · Brisbane — 1 month exploring', rotate: '-rotate-1' },
+                { label: 'Australia',     sub: 'Melbourne · Sydney · Brisbane', rotate: '-rotate-1' },
               ].map(({ label, sub, rotate }) => (
                 <span
                   key={label}
@@ -627,7 +627,7 @@ export default function Home() {
             </EasterEggTooltip>
           </div>
 
-          <h2 className="font-pixel text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">
+          <h2 className="font-pixel text-xl sm:text-2xl md:text-3xl text-ink leading-loose">
             Let's talk about how I can bring this thinking to your team.
           </h2>
 
