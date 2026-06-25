@@ -245,6 +245,16 @@ export default function Home() {
               MSc Marketing at WU Vienna, Bocconi alumna in Economics & Management. Drawn to brand strategy, digital campaigns, and the data behind consumer behaviour — building the bridge between creative thinking and measurable impact.
             </motion.p>
 
+            <motion.div variants={fadeIn} className="bg-teal/8 border-l-4 border-teal p-4 flex items-start gap-4">
+              <span className="font-pixel text-teal text-lg mt-0.5 leading-none select-none">AI</span>
+              <div>
+                <p className="font-mono text-sm text-ink-dim leading-relaxed">
+                  Genuinely fascinated by AI and how it's reshaping marketing — from generative content to the way brands get discovered. Current deep dive:{' '}
+                  <span className="text-ink font-bold">GEO (Generative Engine Optimisation)</span> — how to make brands visible and credible in AI-generated answers, not just on traditional search.
+                </p>
+              </div>
+            </motion.div>
+
             <motion.div variants={fadeIn} className="bg-magenta/10 border-l-4 border-magenta p-4 flex items-start gap-4">
               <span className="font-pixel text-magenta text-sm mt-1 animate-pulse">!</span>
               <p className="font-mono text-ink text-sm">
