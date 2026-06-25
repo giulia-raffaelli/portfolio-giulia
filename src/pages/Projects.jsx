@@ -171,11 +171,11 @@ export default function Projects() {
                 rel="noopener noreferrer"
                 className={`block bg-panel p-6 ${colorClassMap[project.color].border} hover:-translate-y-2 transition-transform duration-300 neon-focus h-full flex flex-col group`}
               >
-                <div className="flex justify-between items-start mb-4">
-                  <span className={`text-xs font-mono px-2 py-1 ${colorClassMap[project.color].badge}`}>
+                <div className="flex flex-wrap gap-x-3 gap-y-2 items-start justify-between mb-4">
+                  <span className={`text-xs font-mono px-2 py-1 shrink-0 ${colorClassMap[project.color].badge}`}>
                     {project.tag}
                   </span>
-                  <span className="text-xs font-mono text-ink-dim">{project.team}</span>
+                  <span className="text-xs font-mono text-ink-dim shrink-0">{project.team}</span>
                 </div>
                 <h3 className="font-pixel text-sm text-ink mb-4 group-hover:text-teal transition-colors leading-relaxed">
                   {project.title}
