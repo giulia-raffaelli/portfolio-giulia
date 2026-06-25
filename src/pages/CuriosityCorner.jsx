@@ -38,9 +38,8 @@ export default function CuriosityCorner() {
         {/* Page header */}
         <motion.div variants={itemVariants} className="mb-4">
           <div className="flex items-center gap-4 mb-4">
-            <span className="font-pixel text-2xl text-magenta">AI</span>
             <h1 className="font-pixel text-xl sm:text-3xl text-ink uppercase leading-tight">
-              AI Killed the Human Star
+              <span className="text-magenta">AI</span> Killed the Human Star
             </h1>
             <div className="h-[2px] bg-magenta/30 flex-grow ml-2"></div>
           </div>

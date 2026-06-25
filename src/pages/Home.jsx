@@ -1,45 +1,32 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef } from 'react';
 
 function PixelAvatar({ src }) {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    const img = new window.Image();
-    img.onload = () => {
-      const W = canvas.width;
-      const H = canvas.height;
-      const PIXEL_RES = 42;
-
-      const offscreen = document.createElement('canvas');
-      offscreen.width = PIXEL_RES;
-      offscreen.height = PIXEL_RES;
-      const offCtx = offscreen.getContext('2d');
-      offCtx.imageSmoothingEnabled = false;
-      offCtx.drawImage(img, 0, 0, PIXEL_RES, PIXEL_RES);
-
-      ctx.imageSmoothingEnabled = false;
-      ctx.clearRect(0, 0, W, H);
-      ctx.drawImage(offscreen, 0, 0, W, H);
-
-      ctx.fillStyle = 'rgba(62, 144, 158, 0.22)';
-      ctx.fillRect(0, 0, W, H);
-    };
-    img.src = src;
-  }, [src]);
-
   return (
-    <canvas
-      ref={canvasRef}
-      width={300}
-      height={300}
-      style={{ imageRendering: 'pixelated', width: '100%', height: '100%', display: 'block' }}
-    />
+    <div className="relative w-full h-full">
+      <img
+        src={src}
+        alt="Giulia Raffaelli"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: 'center top',
+          display: 'block',
+          filter: 'contrast(1.18) brightness(0.88) saturate(0.72)',
+        }}
+      />
+      {/* Teal arcade colour wash */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ background: 'rgba(62, 144, 158, 0.18)', mixBlendMode: 'color' }}
+      ></div>
+      {/* Magenta edge glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ boxShadow: 'inset 0 0 28px rgba(255,46,146,0.18)' }}
+      ></div>
+    </div>
   );
 }
 
