@@ -1,5 +1,47 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
+
+function PixelAvatar({ src }) {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const img = new window.Image();
+    img.onload = () => {
+      const W = canvas.width;
+      const H = canvas.height;
+      const PIXEL_RES = 42;
+
+      const offscreen = document.createElement('canvas');
+      offscreen.width = PIXEL_RES;
+      offscreen.height = PIXEL_RES;
+      const offCtx = offscreen.getContext('2d');
+      offCtx.imageSmoothingEnabled = false;
+      offCtx.drawImage(img, 0, 0, PIXEL_RES, PIXEL_RES);
+
+      ctx.imageSmoothingEnabled = false;
+      ctx.clearRect(0, 0, W, H);
+      ctx.drawImage(offscreen, 0, 0, W, H);
+
+      ctx.fillStyle = 'rgba(62, 144, 158, 0.22)';
+      ctx.fillRect(0, 0, W, H);
+    };
+    img.src = src;
+  }, [src]);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      width={300}
+      height={300}
+      style={{ imageRendering: 'pixelated', width: '100%', height: '100%', display: 'block' }}
+    />
+  );
+}
 
 export default function Home() {
   const shouldReduceMotion = useReducedMotion();
@@ -111,15 +153,15 @@ export default function Home() {
             className="flex flex-col"
           >
             <div className="bg-panel border-4 border-teal p-2 shadow-[8px_8px_0_var(--teal)] relative group">
-              <div className="aspect-square bg-bg-deep border-2 border-teal/50 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-bg-deep z-10"></div>
-                <div className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-bg-deep z-10"></div>
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-bg-deep z-10"></div>
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-bg-deep z-10"></div>
-                <div className="w-full h-full relative opacity-80 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-teal/20 border-t-4 border-l-4 border-r-4 border-teal/40"></div>
-                  <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[40%] aspect-square bg-teal/20 border-4 border-teal/40 rounded-sm"></div>
-                </div>
+              <div className="aspect-square bg-bg-deep border-2 border-teal/50 overflow-hidden relative">
+                {/* Pixel corner decorations */}
+                <div className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-teal z-10 pointer-events-none"></div>
+                <div className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-teal z-10 pointer-events-none"></div>
+                <div className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-teal z-10 pointer-events-none"></div>
+                <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-teal z-10 pointer-events-none"></div>
+                {/* Scanline overlay on photo */}
+                <div className="absolute inset-0 z-10 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 4px)' }}></div>
+                <PixelAvatar src="/giulia-avatar.png" />
               </div>
               <div className="mt-4 text-center">
                 <h3 className="font-pixel text-sm text-ink mb-2">Giulia Raffaelli</h3>
@@ -139,7 +181,7 @@ export default function Home() {
             className="flex flex-col space-y-8"
           >
             <motion.p variants={fadeIn} className="font-mono text-lg text-ink-dim leading-relaxed">
-              I'm a marketing master's student at WU Vienna with a background in Economics & Management for Arts, Culture and Communication from Bocconi University. I'm curious by nature - drawn to brand strategy, digital campaigns and the data behind consumer behaviour, and always looking for the bridge between creativity and measurable impact. Outside coursework, I've worked across content strategy, business development and sales - and I like projects that combine structured thinking with a strong creative point of view.
+              MSc Marketing at WU Vienna, Bocconi alumna in Economics & Management. Drawn to brand strategy, digital campaigns, and the data behind consumer behaviour — building the bridge between creative thinking and measurable impact.
             </motion.p>
 
             <motion.div variants={fadeIn} className="bg-magenta/10 border-l-4 border-magenta p-4 flex items-start gap-4">
