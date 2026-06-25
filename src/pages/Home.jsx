@@ -222,7 +222,7 @@ export default function Home() {
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-teal z-10 pointer-events-none"></div>
                 {/* Scanline overlay on photo */}
                 <div className="absolute inset-0 z-10 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.18) 3px, rgba(0,0,0,0.18) 4px)' }}></div>
-                <PixelAvatar src="/giulia-avatar.png" />
+                <PixelAvatar src={`${import.meta.env.BASE_URL}giulia-avatar.png`} />
               </div>
               <div className="mt-4 text-center">
                 <h3 className="font-pixel text-sm text-ink mb-2">Giulia Raffaelli</h3>
