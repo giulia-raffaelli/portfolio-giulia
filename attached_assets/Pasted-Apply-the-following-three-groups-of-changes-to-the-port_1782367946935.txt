@@ -1,0 +1,63 @@
+Apply the following three groups of changes to the portfolio site. Keep all
+real content (text, dates, links, project data) exactly as is unless
+explicitly stated otherwise below.
+
+## 1. BUG FIX — Skill Tree achievement badge
+On the BSc Economics & Management card (Education / 03 Skill Tree section),
+the "SECRET ACHIEVEMENT UNLOCKED 🔒" badge currently overflows the card's
+top-right corner and bleeds into the empty space beside the card, and it
+overlaps/hides the score badge ("109/110") that should also be visible on
+this card, consistent with the other 3 education cards.
+- Keep the badge fully INSIDE the card's bounding box.
+- Make both badges coexist without overlapping (stack them, or place the
+  achievement badge as a second small line below the score badge).
+- Replace the closed-padlock icon 🔒 (which contradicts "UNLOCKED") with
+  🏆 or an open padlock 🔓.
+
+## 2. MAKE NERD-MOVIE/GAME REFERENCES EXPLICIT
+Right now the theme reads as generic "RPG UI" (quest log, skill tree) but
+lacks specific cinematic touches. Add these concrete, labeled moments.
+Use ORIGINAL copy inspired by each reference — never quote movie dialogue
+verbatim, never use copyrighted logos, character art, or stills.
+
+a) HERO — make the Tron-style perspective grid floor actually visible and
+   slowly animated (teal/magenta lines) beneath the title, not just a faint
+   texture. Make "INSERT COIN TO CONTINUE" the primary hero CTA copy, with
+   a blinking cursor block beside it.
+
+b) WORK EXPERIENCE / QUEST LOG — add a small label next to the active job:
+   "MAIN QUEST", and "COMPLETED QUEST" next to the past two roles.
+
+c) EDUCATION — near the existing "Next: Kobe exchange" callout, add two
+   small original labels side by side: "STAY ON CURRENT PATH" and "NEW
+   EXCHANGE UNLOCKED →" — a nod to the classic sci-fi two-options decision
+   trope, without naming or depicting any specific franchise.
+
+d) BEYOND THE DESK / WORLD MAP — add a thin dashed flight path connecting
+   the location pins in sequence, a small compass-rose icon in a corner,
+   and style each location chip like a rotated passport stamp instead of a
+   plain rounded chip.
+
+e) CONTACT — add a small eyebrow label "PHONE HOME" next to "05 · Contact",
+   and a small glowing hand-drawn SVG icon (rotary phone or signal wave,
+   not a stock image) next to the email/phone block.
+
+f) FOOTER — add a small low-contrast blinking "CONTINUE? Y/N" detail near
+   the copyright line, purely decorative.
+
+Keep every addition subtle and professional — flavor details for people who
+recognize the references, not loud gimmicks. Respect prefers-reduced-motion
+for every new animated element.
+
+## 3. NEW SECTION — "AI Killed the Human Star"
+On the Curiosity Corner / AI-Playground page, add a new section titled
+"AI Killed the Human Star" (a nod to "Video Killed the Radio Star") as the
+home for Giulia's future AI-related projects.
+- Style it consistently with the rest of the arcade theme (same fonts,
+  card style as other sections).
+- Since there are no projects to show yet, build an empty/upcoming state
+  rather than inventing fake content — e.g. a few "locked level" tiles
+  with a "COMING SOON" tag, or a single message styled like a loading
+  screen: "New levels loading...". Do not fabricate project descriptions.
+- Leave clear structure (a repeatable card/tile component) so real AI
+  projects can be dropped in later without restyling.

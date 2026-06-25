@@ -19,17 +19,28 @@ export default function Home() {
 
   return (
     <div className="w-full">
-      
+
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex flex-col justify-center items-center px-4 overflow-hidden border-b-2 border-teal/20 pt-20">
-        {/* Tron Grid Background */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none perspective-[1000px]">
-          <div className="absolute bottom-0 left-[-50%] w-[200%] h-[100%] bg-[linear-gradient(rgba(62,144,158,0.2)_1px,transparent_1px),linear-gradient(90deg,rgba(62,144,158,0.2)_1px,transparent_1px)] bg-[size:50px_50px] [transform:rotateX(60deg)_translateY(100px)] opacity-60"></div>
+        {/* Tron Grid Background — animated perspective grid */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none" style={{ perspective: '800px' }}>
+          <div
+            className={`tron-grid absolute bottom-[-20%] left-[-50%] w-[200%] h-[130%]`}
+            style={{
+              backgroundImage:
+                'linear-gradient(rgba(62,144,158,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(62,144,158,0.4) 1px, transparent 1px), linear-gradient(rgba(255,46,146,0.12) 1px, transparent 1px)',
+              backgroundSize: '50px 50px, 50px 50px, 150px 150px',
+              transform: 'rotateX(62deg) translateY(60px)',
+              transformOrigin: 'bottom center',
+            }}
+          ></div>
           {/* Horizon fade */}
-          <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/80 to-transparent z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-bg via-bg/70 to-transparent z-10 pointer-events-none"></div>
+          {/* Side fades */}
+          <div className="absolute inset-0 bg-gradient-to-r from-bg via-transparent to-bg z-10 pointer-events-none"></div>
         </div>
 
-        <motion.div 
+        <motion.div
           className="relative z-20 text-center max-w-4xl mx-auto w-full"
           initial="hidden"
           animate="visible"
@@ -46,6 +57,14 @@ export default function Home() {
           <motion.p variants={fadeIn} className="font-mono text-lg md:text-xl text-ink-dim max-w-2xl mx-auto mb-8 leading-relaxed">
             Marketing & Brand Strategy — MSc Marketing student at WU Vienna, building the bridge between creative ideas and measurable impact.
           </motion.p>
+
+          {/* INSERT COIN arcade prompt */}
+          <motion.div variants={fadeIn} className="flex justify-center items-center gap-3 mb-8">
+            <span className="font-pixel text-xs sm:text-sm text-amber tracking-widest uppercase drop-shadow-[0_0_8px_rgba(255,182,39,0.6)]">
+              INSERT COIN TO CONTINUE
+            </span>
+            <span className="cursor-blink inline-block w-3 h-5 bg-amber align-middle"></span>
+          </motion.div>
 
           <motion.div variants={fadeIn} className="font-mono text-sm text-ink flex flex-wrap justify-center items-center gap-x-4 gap-y-2 mb-12">
             <span>Vienna, Austria</span>
@@ -70,7 +89,7 @@ export default function Home() {
 
       {/* SECTION 01: ABOUT */}
       <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -84,7 +103,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-12 lg:gap-20">
           {/* Left: Avatar Card */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -93,13 +112,10 @@ export default function Home() {
           >
             <div className="bg-panel border-4 border-teal p-2 shadow-[8px_8px_0_var(--teal)] relative group">
               <div className="aspect-square bg-bg-deep border-2 border-teal/50 flex items-center justify-center overflow-hidden relative">
-                {/* Pixel frame inner corners */}
                 <div className="absolute top-0 left-0 w-4 h-4 border-t-4 border-l-4 border-bg-deep z-10"></div>
                 <div className="absolute top-0 right-0 w-4 h-4 border-t-4 border-r-4 border-bg-deep z-10"></div>
                 <div className="absolute bottom-0 left-0 w-4 h-4 border-b-4 border-l-4 border-bg-deep z-10"></div>
                 <div className="absolute bottom-0 right-0 w-4 h-4 border-b-4 border-r-4 border-bg-deep z-10"></div>
-                
-                {/* Placeholder silhouette - abstract shapes */}
                 <div className="w-full h-full relative opacity-80 group-hover:opacity-100 transition-opacity">
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[60%] h-[40%] bg-teal/20 border-t-4 border-l-4 border-r-4 border-teal/40"></div>
                   <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[40%] aspect-square bg-teal/20 border-4 border-teal/40 rounded-sm"></div>
@@ -115,7 +131,7 @@ export default function Home() {
           </motion.div>
 
           {/* Right: Bio & Info */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -131,6 +147,16 @@ export default function Home() {
               <p className="font-mono text-ink text-sm">
                 <strong className="text-magenta">Next -</strong> exchange semester in Kobe, Japan, from September to January.
               </p>
+            </motion.div>
+
+            {/* Two-path decision — sci-fi trope nod */}
+            <motion.div variants={fadeIn} className="flex flex-wrap gap-3">
+              <span className="font-mono text-[10px] text-ink-dim/60 border border-ink-dim/20 px-2 py-1 tracking-wider uppercase">
+                ▸ STAY ON CURRENT PATH
+              </span>
+              <span className="font-mono text-[10px] text-teal border border-teal/30 px-2 py-1 tracking-wider uppercase">
+                ▸ NEW EXCHANGE UNLOCKED →
+              </span>
             </motion.div>
 
             <motion.div variants={fadeIn} className="flex flex-col space-y-4">
@@ -162,7 +188,7 @@ export default function Home() {
 
       {/* SECTION 02: WORK EXPERIENCE */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -175,21 +201,26 @@ export default function Home() {
         </motion.div>
 
         <div className="space-y-12 relative before:absolute before:inset-0 before:ml-4 sm:before:ml-6 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-magenta before:via-magenta/50 before:to-transparent">
-          
-          {/* Job 1 */}
-          <motion.div 
+
+          {/* Job 1 — Active */}
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
           >
-            {/* Timeline dot */}
             <div className="flex items-center justify-center w-8 h-8 rounded-full border-4 border-bg bg-magenta absolute left-0 sm:left-2 md:left-1/2 -translate-x-1/2 shadow-[0_0_15px_rgba(255,46,146,0.8)] z-10"></div>
-            
+
             <div className="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-panel p-6 pixel-border-magenta relative ml-auto md:ml-0 md:group-odd:ml-auto">
-              <div className="absolute -top-3 -right-3 bg-amber text-bg font-pixel text-[10px] px-2 py-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)] z-20 animate-pulse">
-                ACTIVE QUEST
+              {/* Quest type labels */}
+              <div className="flex flex-wrap items-center gap-2 mb-3">
+                <span className="bg-amber text-bg font-pixel text-[9px] px-2 py-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)] animate-pulse">
+                  ACTIVE QUEST
+                </span>
+                <span className="font-mono text-[10px] text-amber/80 tracking-widest uppercase border border-amber/30 px-2 py-1">
+                  MAIN QUEST
+                </span>
               </div>
               <h3 className="font-pixel text-sm text-ink mb-1 leading-relaxed">Social Media Manager</h3>
               <div className="font-mono text-xs text-magenta mb-4">Digital Economy, WU Vienna</div>
@@ -204,18 +235,22 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Job 2 */}
-          <motion.div 
+          {/* Job 2 — Completed */}
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
           >
-            {/* Timeline dot */}
             <div className="flex items-center justify-center w-6 h-6 rounded-full border-4 border-bg bg-ink-dim absolute left-1 sm:left-3 md:left-1/2 -translate-x-1/2 z-10 group-hover:bg-teal transition-colors"></div>
-            
+
             <div className="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-panel p-6 border-2 border-teal/20 hover:border-teal/50 transition-colors relative ml-auto md:ml-0 md:group-odd:ml-auto">
+              <div className="mb-3">
+                <span className="font-mono text-[10px] text-ink-dim/60 tracking-widest uppercase border border-ink-dim/20 px-2 py-1">
+                  COMPLETED QUEST
+                </span>
+              </div>
               <h3 className="font-pixel text-sm text-ink mb-1 leading-relaxed">Marketing & Business Development Intern</h3>
               <div className="font-mono text-xs text-teal mb-4">BitBang S.r.l.</div>
               <div className="font-mono text-xs text-ink-dim mb-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -229,18 +264,22 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* Job 3 */}
-          <motion.div 
+          {/* Job 3 — Completed */}
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group"
           >
-            {/* Timeline dot */}
             <div className="flex items-center justify-center w-6 h-6 rounded-full border-4 border-bg bg-ink-dim absolute left-1 sm:left-3 md:left-1/2 -translate-x-1/2 z-10 group-hover:bg-teal transition-colors"></div>
-            
+
             <div className="w-[calc(100%-3rem)] sm:w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-panel p-6 border-2 border-teal/20 hover:border-teal/50 transition-colors relative ml-auto md:ml-0 md:group-odd:ml-auto">
+              <div className="mb-3">
+                <span className="font-mono text-[10px] text-ink-dim/60 tracking-widest uppercase border border-ink-dim/20 px-2 py-1">
+                  COMPLETED QUEST
+                </span>
+              </div>
               <h3 className="font-pixel text-sm text-ink mb-1 leading-relaxed">Sales Representative</h3>
               <div className="font-mono text-xs text-teal mb-4">PegPerego</div>
               <div className="font-mono text-xs text-ink-dim mb-4 flex flex-col sm:flex-row gap-2 sm:gap-4">
@@ -259,7 +298,7 @@ export default function Home() {
 
       {/* SECTION 03: EDUCATION */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -271,9 +310,8 @@ export default function Home() {
           <div className="h-[2px] bg-amber/30 flex-grow ml-4"></div>
         </motion.div>
 
-        {/* Desktop: SVG connectors visible, Mobile: Stacked with CSS lines */}
         <div className="relative">
-          {/* Connector lines (Desktop only visual flair) */}
+          {/* Connector lines (Desktop only) */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none z-0">
             <svg className="w-full h-full" viewBox="0 0 800 600" preserveAspectRatio="none" style={{ minHeight: '500px' }}>
               <path d="M 200 150 L 200 300 L 600 300 L 600 450" fill="none" stroke="rgba(255,182,39,0.3)" strokeWidth="4" strokeDasharray="8 8" />
@@ -282,9 +320,9 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative z-10">
-            
-            {/* Node 1 */}
-            <motion.div 
+
+            {/* Node 1 — MSc Marketing */}
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -299,27 +337,30 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Node 2 */}
-            <motion.div 
+            {/* Node 2 — Bocconi (FIXED: both badges fully inside card, no overflow) */}
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeIn}
               className="bg-panel border-l-4 border-amber p-6 relative group"
             >
-              <div className="absolute -top-4 -right-4 md:-right-8 bg-violet text-bg font-pixel text-[9px] px-3 py-2 shadow-[2px_2px_0_rgba(0,0,0,0.5)] z-20 border-2 border-ink rotate-3">
-                SECRET ACHIEVEMENT UNLOCKED 🔓
+              {/* Badges row — stacked inside card bounds */}
+              <div className="flex flex-wrap justify-end items-start gap-2 mb-4">
+                <span className="bg-amber/10 text-amber font-mono text-xs font-bold px-2 py-1">109/110</span>
+                <span className="bg-violet text-bg font-pixel text-[9px] px-2 py-1 shadow-[2px_2px_0_rgba(0,0,0,0.5)] border border-violet/50 rotate-1 whitespace-nowrap">
+                  SECRET ACHIEVEMENT UNLOCKED 🏆
+                </span>
               </div>
-              <div className="absolute top-0 right-0 p-2 bg-amber/10 text-amber font-mono text-xs font-bold mt-6 md:mt-0 mr-8 md:mr-0">109/110</div>
-              <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed pr-24 mt-4 md:mt-0">BSc Economics & Management</h3>
+              <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed">BSc Economics & Management</h3>
               <div className="font-mono text-xs text-amber mb-4">Bocconi University · Sep 2021–Oct 2024</div>
               <p className="font-mono text-sm text-ink-dim leading-relaxed">
                 Arts, Culture and Communication. Thesis: 'Marketing Mattel's live-action Barbie: a case study in rebranding a cultural icon.'
               </p>
             </motion.div>
 
-            {/* Node 3 */}
-            <motion.div 
+            {/* Node 3 — Digital Marketing */}
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -334,8 +375,8 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Node 4 */}
-            <motion.div 
+            {/* Node 4 — Exchange */}
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
@@ -356,7 +397,7 @@ export default function Home() {
 
       {/* SECTION 04: BEYOND THE DESK */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
@@ -369,9 +410,9 @@ export default function Home() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          
+
           {/* Panel A: Guild Hall */}
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -395,40 +436,88 @@ export default function Home() {
             </ul>
           </motion.div>
 
-          {/* Panel B: World Map */}
-          <motion.div 
+          {/* Panel B: World Map — passport stamps + flight path + compass */}
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeIn}
             className="bg-bg-deep border-2 border-teal/30 p-8 relative overflow-hidden"
           >
-            {/* Subtle map pattern bg */}
+            {/* Dot grid bg */}
             <div className="absolute inset-0 opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, var(--teal) 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
-            
+
+            {/* Flight path SVG overlay */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-35" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+              <path
+                d="M 30,240 Q 100,140 180,200 Q 260,260 310,160 Q 350,100 380,140"
+                fill="none"
+                stroke="#3E909E"
+                strokeWidth="1.5"
+                strokeDasharray="7 5"
+                strokeLinecap="round"
+              />
+              <circle cx="30"  cy="240" r="2.5" fill="#3E909E" opacity="0.7"/>
+              <circle cx="180" cy="200" r="2.5" fill="#3E909E" opacity="0.7"/>
+              <circle cx="310" cy="160" r="2.5" fill="#3E909E" opacity="0.7"/>
+              <circle cx="380" cy="140" r="2.5" fill="#3E909E" opacity="0.7"/>
+            </svg>
+
+            {/* Compass rose */}
+            <svg
+              className="absolute bottom-4 right-4 opacity-50"
+              width="38"
+              height="38"
+              viewBox="0 0 38 38"
+              aria-hidden="true"
+            >
+              <line x1="19" y1="3"  x2="19" y2="35" stroke="#3E909E" strokeWidth="1"/>
+              <line x1="3"  y1="19" x2="35" y2="19" stroke="#3E909E" strokeWidth="1"/>
+              <line x1="7"  y1="7"  x2="31" y2="31" stroke="#3E909E" strokeWidth="0.5" opacity="0.6"/>
+              <line x1="31" y1="7"  x2="7"  y2="31" stroke="#3E909E" strokeWidth="0.5" opacity="0.6"/>
+              <polygon points="19,3 21,15 19,17 17,15" fill="#3E909E"/>
+              <polygon points="19,35 21,23 19,21 17,23" fill="#3E909E" opacity="0.6"/>
+              <polygon points="3,19 15,17 17,19 15,21"  fill="#3E909E" opacity="0.6"/>
+              <polygon points="35,19 23,17 21,19 23,21" fill="#3E909E" opacity="0.6"/>
+              <text x="19" y="11" textAnchor="middle" fill="#3E909E" fontSize="5" fontFamily="monospace" fontWeight="bold">N</text>
+              <circle cx="19" cy="19" r="2.5" fill="#3E909E"/>
+            </svg>
+
             <h3 className="font-pixel text-lg text-teal mb-8 border-b-2 border-teal/20 pb-4 relative z-10">World Map</h3>
+
+            {/* Passport stamp chips */}
             <div className="flex flex-wrap gap-4 relative z-10">
-              <span className="font-mono text-xs px-3 py-2 border-2 border-dashed border-teal/40 text-ink bg-panel/50 hover:border-teal hover:bg-teal/10 transition-colors">[+] Michigan, USA · Rotary Exchange</span>
-              <span className="font-mono text-xs px-3 py-2 border-2 border-dashed border-teal/40 text-ink bg-panel/50 hover:border-teal hover:bg-teal/10 transition-colors">[+] Beijing · High School Exchange</span>
-              <span className="font-mono text-xs px-3 py-2 border-2 border-dashed border-teal/40 text-ink bg-panel/50 hover:border-teal hover:bg-teal/10 transition-colors">[+] Salisbury, UK · Kaplan Summer Camp</span>
-              <span className="font-mono text-xs px-3 py-2 border-2 border-dashed border-teal/40 text-ink bg-panel/50 hover:border-teal hover:bg-teal/10 transition-colors">[+] Malta · EF Summer Camp</span>
-              <span className="font-mono text-xs px-3 py-2 border-2 border-dashed border-teal/40 text-ink bg-panel/50 hover:border-teal hover:bg-teal/10 transition-colors">[+] Vienna · Tandem Language Program</span>
+              {[
+                { label: 'Michigan, USA', sub: 'Rotary Exchange', rotate: '-rotate-2' },
+                { label: 'Beijing',       sub: 'High School Exchange', rotate: 'rotate-1' },
+                { label: 'Salisbury, UK', sub: 'Kaplan Summer Camp', rotate: '-rotate-1' },
+                { label: 'Malta',         sub: 'EF Summer Camp', rotate: 'rotate-2' },
+                { label: 'Vienna',        sub: 'Tandem Language Program', rotate: '-rotate-1' },
+              ].map(({ label, sub, rotate }) => (
+                <span
+                  key={label}
+                  className={`${rotate} font-mono text-xs px-3 py-2 border-2 border-teal/50 text-ink bg-panel/60 shadow-[inset_0_0_0_1px_rgba(62,144,158,0.15)] hover:border-teal hover:bg-teal/10 transition-colors cursor-default`}
+                  style={{ textAlign: 'center' }}
+                >
+                  <span className="block text-teal text-[9px] tracking-widest uppercase mb-0.5">[+]</span>
+                  <span className="block font-bold">{label}</span>
+                  <span className="block text-ink-dim text-[10px]">{sub}</span>
+                </span>
+              ))}
             </div>
           </motion.div>
 
         </div>
 
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
           className="max-w-3xl mx-auto text-center py-12 px-8 relative"
         >
-          {/* Quotes visual styling */}
           <div className="absolute top-0 left-0 text-6xl text-teal/20 font-serif leading-none">"</div>
           <div className="absolute bottom-0 right-0 text-6xl text-teal/20 font-serif leading-none">"</div>
-          
           <p className="font-serif italic text-2xl md:text-3xl text-ink leading-relaxed">
             A genuine curiosity for different cultures and languages - German (B1/B2) is the latest one in progress.
           </p>
@@ -437,40 +526,65 @@ export default function Home() {
 
       {/* SECTION 05: CONTACT */}
       <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center border-t-2 border-teal/20 mt-12">
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
           className="flex flex-col items-center gap-10"
         >
+          {/* Section header with PHONE HOME eyebrow */}
+          <div className="flex flex-wrap justify-center items-center gap-3 mb-2">
+            <span className="font-pixel text-xs text-teal">05 · Contact</span>
+            <span className="font-mono text-[10px] text-teal/50 border border-teal/20 px-2 py-0.5 tracking-widest uppercase">
+              PHONE HOME
+            </span>
+          </div>
+
           <h2 className="font-pixel text-2xl sm:text-3xl md:text-4xl text-ink leading-tight">
             Let's talk about how I can bring this thinking to your team.
           </h2>
 
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 sm:gap-10 w-full">
-            <a 
-              href="mailto:giuliaraffaelli179@gmail.com"
-              className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
-            >
-              giuliaraffaelli179@gmail.com
-            </a>
-            <span className="hidden sm:inline text-ink/30 font-mono">·</span>
-            <a 
-              href="tel:+393341094073"
-              className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
-            >
-              +39 334 109 4073
-            </a>
-            <span className="hidden sm:inline text-ink/30 font-mono">·</span>
-            <a 
-              href="https://linkedin.com/in/giulia-raffaelli"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
-            >
-              linkedin.com/in/giulia-raffaelli
-            </a>
+          {/* Contact links + glowing signal icon */}
+          <div className="flex flex-col items-center gap-4 w-full">
+            <div className="flex items-center justify-center gap-3">
+              {/* Signal wave SVG */}
+              <svg
+                width="22"
+                height="16"
+                viewBox="0 0 22 16"
+                className="glow-teal flex-shrink-0"
+                aria-hidden="true"
+              >
+                <path d="M1 13 Q5.5 3 11 8 Q16.5 13 21 3" stroke="#3E909E" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M4 15 Q7 7 11 10 Q15 13 18 5" stroke="#3E909E" strokeWidth="0.8" fill="none" strokeLinecap="round" opacity="0.45"/>
+                <circle cx="11" cy="8.5" r="1.5" fill="#3E909E"/>
+              </svg>
+              <a
+                href="mailto:giuliaraffaelli179@gmail.com"
+                className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
+              >
+                giuliaraffaelli179@gmail.com
+              </a>
+            </div>
+
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-8">
+              <a
+                href="tel:+393341094073"
+                className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
+              >
+                +39 334 109 4073
+              </a>
+              <span className="hidden sm:inline text-ink/30 font-mono">·</span>
+              <a
+                href="https://linkedin.com/in/giulia-raffaelli"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
+              >
+                linkedin.com/in/giulia-raffaelli
+              </a>
+            </div>
           </div>
         </motion.div>
       </section>
