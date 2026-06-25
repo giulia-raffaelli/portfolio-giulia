@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import PixelInvadersBg from '../components/PixelInvadersBg';
 
 function LockedTile() {
   return (
@@ -27,7 +28,8 @@ export default function CuriosityCorner() {
   };
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-24 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      <PixelInvadersBg />
       <motion.div
         className="max-w-4xl mx-auto"
         variants={containerVariants}

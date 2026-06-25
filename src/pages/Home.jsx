@@ -2,6 +2,56 @@ import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
+// Wraps an education card: Tetris drop-in spring animation + coin-pop on hover
+function CoinCard({ children, delay, className }) {
+  const [coinKey, setCoinKey] = useState(null);
+  const shouldReduce = useReducedMotion();
+
+  const variants = {
+    hidden: { opacity: 0, y: shouldReduce ? 0 : -100, scaleY: shouldReduce ? 1 : 0.85 },
+    visible: {
+      opacity: 1, y: 0, scaleY: 1,
+      transition: { type: 'spring', stiffness: 280, damping: 22, delay: delay ?? 0 },
+    },
+  };
+
+  const pop = () => {
+    const id = Date.now();
+    setCoinKey(id);
+    setTimeout(() => setCoinKey(null), 950);
+  };
+
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={variants}
+      className={`${className} relative`}
+      onMouseEnter={pop}
+      style={{ overflow: 'visible' }}
+    >
+      {children}
+      {coinKey && (
+        <div
+          key={coinKey}
+          className="coin-pop absolute right-5 -top-7 pointer-events-none z-30 flex items-end gap-1"
+        >
+          <svg width="16" height="16" viewBox="0 0 6 6" style={{ imageRendering: 'pixelated', display: 'block' }}>
+            <rect x="1" y="0" width="4" height="1" fill="#FFB627" />
+            <rect x="0" y="1" width="1" height="4" fill="#FFB627" />
+            <rect x="5" y="1" width="1" height="4" fill="#FFB627" />
+            <rect x="1" y="1" width="4" height="4" fill="#FFD700" />
+            <rect x="1" y="5" width="4" height="1" fill="#FFB627" />
+            <rect x="2" y="2" width="1" height="2" fill="rgba(255,255,255,0.55)" />
+          </svg>
+          <span className="font-pixel text-[7px] text-amber leading-none">+10</span>
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 function EasterEggTooltip({ children, quote }) {
   const [show, setShow] = useState(false);
   return (
@@ -378,29 +428,17 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-16 relative z-10">
 
             {/* Node 1 — MSc Marketing */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="bg-panel border-l-4 border-amber p-6 relative group sparkle-card"
-            >
+            <CoinCard delay={0} className="bg-panel border-l-4 border-amber p-6 group sparkle-card">
               <div className="absolute top-0 right-0 p-2 bg-amber/10 text-amber font-mono text-xs font-bold">GPA 1.0/4</div>
               <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed pr-20">MSc in Marketing</h3>
               <div className="font-mono text-xs text-amber mb-4">Wirtschaftsuniversität Wien (WU) · Sep 2025–Jun 2027</div>
               <div className="font-mono text-sm text-ink-dim">
                 <span className="text-ink font-bold">Coursework:</span> Global Marketing Strategy, Management by Experiments, Marketing Analytics, SQL & Power BI
               </div>
-            </motion.div>
+            </CoinCard>
 
             {/* Node 2 — Bocconi */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="bg-panel border-l-4 border-amber p-6 relative group sparkle-card"
-            >
+            <CoinCard delay={0.15} className="bg-panel border-l-4 border-amber p-6 group sparkle-card">
               {/* Badges row — stacked inside card bounds */}
               <div className="flex flex-wrap justify-end items-start gap-2 mb-4">
                 <span className="bg-amber/10 text-amber font-mono text-xs font-bold px-2 py-1">109/110</span>
@@ -413,32 +451,20 @@ export default function Home() {
               <p className="font-mono text-sm text-ink-dim leading-relaxed">
                 Arts, Culture and Communication. Thesis: 'Marketing Mattel's live-action Barbie: a case study in rebranding a cultural icon.'
               </p>
-            </motion.div>
+            </CoinCard>
 
             {/* Node 3 — Digital Marketing */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="bg-panel border-l-4 border-amber/50 p-6 relative group sparkle-card"
-            >
+            <CoinCard delay={0.3} className="bg-panel border-l-4 border-amber/50 p-6 group sparkle-card">
               <div className="absolute top-0 right-0 p-2 bg-amber/5 text-amber/70 font-mono text-xs">Online</div>
               <h3 className="font-pixel text-sm text-ink mb-2 leading-relaxed">Master in Digital Marketing</h3>
               <div className="font-mono text-xs text-amber/70 mb-4">Start2Impact University · Apr 2024–May 2025</div>
               <div className="font-mono text-sm text-ink-dim">
                 <span className="text-ink font-bold">Coursework:</span> SEO, Google Ads & Analytics, Meta Ads, Funnel Marketing, Copywriting, Video Editing
               </div>
-            </motion.div>
+            </CoinCard>
 
             {/* Node 4 — Exchange */}
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeIn}
-              className="bg-panel border-l-4 border-amber/50 p-6 relative group sparkle-card"
-            >
+            <CoinCard delay={0.45} className="bg-panel border-l-4 border-amber/50 p-6 group sparkle-card">
               <div className="absolute top-0 right-0 p-2 bg-amber/5 text-amber/70 font-mono text-xs font-bold">GPA 1.2/4</div>
               <div className="flex items-center gap-2 mb-2 flex-wrap">
                 <h3 className="font-pixel text-sm text-ink leading-relaxed">Exchange Program</h3>
@@ -448,7 +474,7 @@ export default function Home() {
               <div className="font-mono text-sm text-ink-dim">
                 <span className="text-ink font-bold">Coursework:</span> Marketing, Corporate Finance, Strategic Management & Leadership
               </div>
-            </motion.div>
+            </CoinCard>
 
           </div>
         </div>

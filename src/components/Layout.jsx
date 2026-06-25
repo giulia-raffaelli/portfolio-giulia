@@ -4,6 +4,7 @@ import Header from './Header'
 import Footer from './Footer'
 import AchievementToast from './AchievementToast'
 import MatrixRain from './MatrixRain'
+import PixelGhost from './PixelGhost'
 
 function PageTransition({ children }) {
   const shouldReduceMotion = useReducedMotion()
@@ -40,6 +41,7 @@ export default function Layout() {
       <Footer />
       <AchievementToast />
       <MatrixRain />
+      <PixelGhost />
     </div>
   )
 }
