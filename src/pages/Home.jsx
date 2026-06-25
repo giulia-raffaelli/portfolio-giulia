@@ -228,8 +228,8 @@ export default function Home() {
               <a href="tel:+393341094073" className="font-mono text-sm text-ink-dim hover:text-teal transition-colors neon-focus flex items-center gap-2">
                 <span className="text-teal">#</span> +39 334 109 4073
               </a>
-              <a href="https://linkedin.com/in/giulia-raffaelli" target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-ink-dim hover:text-teal transition-colors neon-focus flex items-center gap-2">
-                <span className="text-teal">&gt;</span> linkedin.com/in/giulia-raffaelli
+              <a href="https://linkedin.com/in/giulia-raffaelli-" target="_blank" rel="noopener noreferrer" className="font-mono text-sm text-ink-dim hover:text-teal transition-colors neon-focus flex items-center gap-2">
+                <span className="text-teal">&gt;</span> linkedin.com/in/giulia-raffaelli-
               </a>
               <span className="font-mono text-sm text-ink-dim flex items-center gap-2">
                 <span className="text-teal">*</span> Loc: The world
@@ -627,12 +627,12 @@ export default function Home() {
               </a>
               <span className="hidden sm:inline text-ink/30 font-mono">·</span>
               <a
-                href="https://linkedin.com/in/giulia-raffaelli"
+                href="https://linkedin.com/in/giulia-raffaelli-"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-lg text-teal hover:text-amber transition-colors neon-focus"
               >
-                linkedin.com/in/giulia-raffaelli
+                linkedin.com/in/giulia-raffaelli-
               </a>
             </div>
           </div>
